@@ -50,6 +50,9 @@ brew cask install postman
  
 ## Slack
 brew cask install slack
+
+## Whatsapp
+brew cask install whatsapp
  
 ## Sourcetree
 brew cask install sourcetree
