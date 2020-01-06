@@ -67,6 +67,13 @@ echo
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 source ~/.zshrc
 
+## Add Export Statements
+echo "\n" >> ~/.zshrc
+echo "
+## Remove user@macbook from prompt
+export DEFAULT_USER=\$USER
+" >> ~/.zshrc
+
 ## zsh autosuggestions
 echo "\n" >> ~/.zshrc
 brew install zsh-autosuggestions
@@ -75,7 +82,6 @@ source ~/.zshrc
  
 ## zsh syntax highlighting
 brew install zsh-syntax-highlighting
-echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters" >> ~/.zshrc 
 echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 source ~/.zshrc
 
