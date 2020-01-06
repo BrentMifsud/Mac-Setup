@@ -16,13 +16,16 @@ else
 fi
 
 ## Install Homebrew
-echo
-echo "Installing Homebrew..."
+echo "\n
+Installing Homebrew...
+"
+
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 source ~/.zshrc
 
-echo
-echo "Installing applications from homebrew..."
+echo "\n
+Installing applications from homebrew...
+"
 
 ## Get latest version of git
 brew install git
@@ -60,19 +63,18 @@ brew cask install sourcetree
 ## visual studio code
 brew cask install visual-studio-code
 
-echo
-echo "Done."
-echo
+echo "\ndone."
 
 ## Install oh-my-zsh
-echo "Installing oh-my-zsh..."
-echo
+echo "\n
+Installing oh-my-zsh...
+\n"
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 source ~/.zshrc
 
 ## Add Export Statements
-echo "\n" >> ~/.zshrc
-echo "
+echo "\n
 ## Remove user@macbook from prompt
 export DEFAULT_USER=\$USER
 " >> ~/.zshrc
@@ -88,9 +90,7 @@ brew install zsh-syntax-highlighting
 echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 source ~/.zshrc
 
-echo
-echo "done."
-echo
+echo "\ndone."
 
 ## Add Aliases
 echo "
@@ -126,31 +126,32 @@ mkdir ~/Repos
 mkdir ~/Repos/iOS
 
 ## Get all Powerline Fonts
-echo
-echo "Getting Powerline fonts for use with iterm and oh-my-zsh..."
-echo
+echo "\n
+Getting Powerline fonts for use with iterm and oh-my-zsh...
+"
 
 git clone https://github.com/powerline/fonts.git ~/Repos/powerlineFonts
 
-cd ~/Repos/powerlineFonts/
+~/Repos/powerlineFonts/install.sh
 
-./install.sh
+echo "\ndone."
 
-cd ~
+## Get Screensavers
+echo "\n
+Getting Screensavers from github...
+"
+mkdir ~/Repos/screensavers
+git clone https://github.com/agarrharr/awesome-macos-screensavers.git ~/Repos/screensavers
 
-echo
-echo "done."
-echo
+echo "\nDone."
 
-## Setup ssh (comment out if re-running the script)
-echo
-echo "Setting up ssh key. Please follow the prompts..."
-echo
+## Setup ssh
+echo "\n
+Setting up ssh key. Please follow the prompts...
+"
 
 ssh-keygen
 
-echo
-echo "done."
-echo
+echo "\ndone."
 
-echo "Setup Complete."
+echo "\nSetup Complete."
