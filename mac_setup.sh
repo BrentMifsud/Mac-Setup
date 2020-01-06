@@ -72,6 +72,36 @@ echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highligh
 echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc;
 source ~/.zshrc
 
+## Add Aliases
+
+echo "
+## git aliases
+function gc { git commit -m \"\$@\"; }
+alias gcm=\"git checkout master\";
+alias gs=\"git status\";
+alias gpull=\"git pull\";
+alias gf=\"git fetch\";
+alias gfa=\"git fetch --all\";
+alias gf=\"git fetch origin\";
+alias gpush=\"git push\";
+alias gd=\"git diff\";
+alias ga=\"git add .\";
+alias gb=\"git branch\";
+alias gbr=\"git branch remote\"
+alias gfr=\"git remote update\"
+alias gbn=\"git checkout -B \"
+alias grf=\"git reflog\";
+alias grh=\"git reset HEAD~\" # last commit
+alias gac=\"git add . && git commit -a -m \"
+alias gsu=\"git gpush --set-upstream origin \"
+alias glog=\"git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches\"
+
+## other aliases
+alias zshrc=\"code ~/.zshrc\"
+alias refresh=\"source ~/.zshrc\"
+alias update=\"brew update; brew upgrade;\"
+" >> ~/.zshrc
+
 ## Setup ssh (comment out if re-running the script)
 echo;
 echo "Setting up ssh key...";
