@@ -113,15 +113,21 @@ alias update=\"brew update; brew upgrade;\"
 " >> ~/.zshrc
 
 ## Add repos folders
-mkdir ~/repos
-mkdir ~/repos/iOS
+mkdir ~/Repos
+mkdir ~/Repos/iOS
 
 ## Get all Powerline Fonts
 echo
 echo "Getting Powerline fonts for use with iterm and oh-my-zsh..."
 echo
 
-git clone https://github.com/powerline/fonts.git ~/repos/powerlineFonts
+git clone https://github.com/powerline/fonts.git ~/Repos/powerlineFonts
+
+cd ~/Repos/powerlineFonts/
+
+./install.sh
+
+cd ~
 
 echo
 echo "done."
