@@ -23,6 +23,9 @@ source ~/.zshrc;
 
 echo;
 echo "Installing applications...";
+
+## Open JDK
+brew cask install adoptopenjdk
  
 ## Appcleaner
 brew cask install appcleaner;
