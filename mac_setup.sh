@@ -58,7 +58,7 @@ brew cask install slack
 brew cask install whatsapp
  
 ## Sourcetree
-brew cask install sourcetree
+brew cask install gitkraken
  
 ## visual studio code
 brew cask install visual-studio-code
