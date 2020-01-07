@@ -60,8 +60,11 @@ brew cask install whatsapp
 ## Sourcetree
 brew cask install gitkraken
  
-## visual studio code
+## Visual Studio Code
 brew cask install visual-studio-code
+
+## Bettertouchtool
+brew cask install bettertouchtool
 
 echo "\ndone."
 
