@@ -66,6 +66,9 @@ brew cask install visual-studio-code
 ## Bettertouchtool
 brew cask install bettertouchtool
 
+## Icons8
+brew cask install icons8
+
 echo "\ndone."
 
 ## Install oh-my-zsh
