@@ -125,6 +125,10 @@ alias glog=\"git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)
 alias zshrc=\"code ~/.zshrc\"
 alias refresh=\"source ~/.zshrc\"
 alias update=\"brew update; brew upgrade;\"
+alias myip="curl http://ipecho.net/plain; echo"
+alias sshdir="cd ~/.ssh"
+alias home="cd ~"
+alias order66="echo execute order 66; sudo killall -v -9 java"
 " >> ~/.zshrc
 
 ## Add repos folders
