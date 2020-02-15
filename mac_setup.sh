@@ -69,6 +69,9 @@ brew cask install bettertouchtool
 ## Icons8
 brew cask install icons8
 
+## Fira Code Awesome Font
+brew cask install homebrew/cask-fonts/font-fira-code
+
 echo "\ndone."
 
 ## Install oh-my-zsh
@@ -134,17 +137,6 @@ alias order66="echo execute order 66; sudo killall -v -9 java"
 ## Add repos folders
 mkdir ~/Repos
 mkdir ~/Repos/iOS
-
-## Get all Powerline Fonts
-echo "\n
-Getting Powerline fonts for use with iterm and oh-my-zsh...
-"
-
-git clone https://github.com/powerline/fonts.git ~/Repos/powerlineFonts
-
-~/Repos/powerlineFonts/install.sh
-
-echo "\ndone."
 
 ## Get Screensavers
 echo "\n
