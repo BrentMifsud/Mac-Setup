@@ -12,7 +12,7 @@ then
 else
   echo "Setup requires github to complete. Please try on home wifi or get access from network security."
   echo "Exiting..."
-  exit 0
+  exit
 fi
 
 ## Install Homebrew
@@ -157,3 +157,5 @@ ssh-keygen
 echo "\ndone."
 
 echo "\nSetup Complete."
+
+exit 0
