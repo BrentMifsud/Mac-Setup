@@ -132,6 +132,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias sshdir="cd ~/.ssh"
 alias home="cd ~"
 alias order66="echo execute order 66; sudo killall -v -9 java"
+alias xcpurge="rm -rf ~/Library/Developer/Xcode/DerivedData"
 " >> ~/.zshrc
 
 ## Add repos folders
