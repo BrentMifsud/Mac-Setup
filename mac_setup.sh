@@ -72,6 +72,12 @@ brew cask install icons8
 ## Jetbrains Mono font
 brew cask install font-jetbrains-mono
 
+## SwiftLint
+brew install swiftlint
+
+## Swiftformat
+brew install swiftformat
+
 echo "\ndone."
 
 ## Install oh-my-zsh
