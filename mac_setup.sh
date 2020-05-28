@@ -69,8 +69,8 @@ brew cask install bettertouchtool
 ## Icons8
 brew cask install icons8
 
-## Fira Code Awesome Font
-brew cask install homebrew/cask-fonts/font-fira-code
+## Jetbrains Mono font
+brew cask install font-jetbrains-mono
 
 echo "\ndone."
 
