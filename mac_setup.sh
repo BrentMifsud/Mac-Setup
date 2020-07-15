@@ -36,9 +36,6 @@ brew install zsh
 ## Open JDK
 brew cask install adoptopenjdk
  
-## Appcleaner
-brew cask install appcleaner
- 
 ## Dbeaver database viewer
 brew cask install dbeaver-community
  
@@ -51,13 +48,7 @@ brew cask install jetbrains-toolbox
 ## Postman
 brew cask install postman
  
-## Slack
-brew cask install slack
-
-## Whatsapp
-brew cask install whatsapp
- 
-## Sourcetree
+## GitKraken
 brew cask install gitkraken
  
 ## Visual Studio Code
@@ -65,9 +56,6 @@ brew cask install visual-studio-code
 
 ## Bettertouchtool
 brew cask install bettertouchtool
-
-## Icons8
-brew cask install icons8
 
 ## Jetbrains Mono font
 brew cask install font-jetbrains-mono
