@@ -121,7 +121,7 @@ alias glog=\"git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)
 ## other aliases
 alias zshrc=\"code ~/.zshrc\"
 alias refresh=\"source ~/.zshrc\"
-alias update=\"brew update; brew upgrade;\"
+alias update=\"brew cleanup; brew update; brew upgrade;\"
 alias myip="curl http://ipecho.net/plain; echo"
 alias sshdir="cd ~/.ssh"
 alias home="cd ~"
