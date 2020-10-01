@@ -35,9 +35,12 @@ brew install zsh
 
 ## Open JDK
 brew cask install adoptopenjdk
- 
+
 ## Dbeaver database viewer
 brew cask install dbeaver-community
+ 
+## Realm Studio
+brew cask install realm-studio
  
 ## Iterm2
 brew cask install iterm2
@@ -53,19 +56,19 @@ brew cask install gitkraken
  
 ## Visual Studio Code
 brew cask install visual-studio-code
-
+ 
 ## Bettertouchtool
 brew cask install bettertouchtool
-
+ 
 ## Jetbrains Mono font
 brew cask install font-jetbrains-mono
-
+ 
 ## SwiftLint
 brew install swiftlint
-
+ 
 ## Swiftformat
 brew install swiftformat
-
+ 
 echo "\ndone."
 
 ## Install oh-my-zsh
