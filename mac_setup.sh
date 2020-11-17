@@ -1,49 +1,43 @@
 #!/bin/zsh
 echo "Begin Setup..."
 
-##Check if github is available
-echo "Checking if github is available..."
-ping -c 1 www.github.com 1>/dev/null 2>/dev/null
-SUCCESS=$?
-
-if [ $SUCCESS -eq 0 ]
-then
-  echo "Github is available. Continuing..."
-else
-  echo "Setup requires github to complete. Please try on home wifi or get access from network security."
-  echo "Exiting..."
-  exit
-fi
-
 ## Install Homebrew
 echo "\n
 Installing Homebrew...
 "
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-source ~/.zshrc
 
-echo "\n
-Installing applications from homebrew...
-"
+# Check if .zshrc exists.
+ZSHRC=~/.zshrc
+
+if test -f "$ZSHRC"; then
+    echo "$ZSHRC already exists."
+else
+    echo ".zshrc not found. Creating it..."
+    touch ~/.zshrc
+    echo ".zshrc created."
+fi
+
+echo "\nInstalling applications from homebrew..."
+
+## Tap fonts so that they can be installed via homebrew
+brew tap homebrew/cask-fonts
 
 ## Get latest version of git
 brew install git
 
 ## get latest version of zsh
 brew install zsh
-
-## Open JDK
-brew cask install adoptopenjdk
-
-## Dbeaver database viewer
-brew cask install dbeaver-community
- 
-## Realm Studio
-brew cask install realm-studio
  
 ## Iterm2
 brew cask install iterm2
+
+## Setapp
+brew cask install setapp
+
+## Realm Studio
+brew cask install mongodb-realm-studio
  
 ## Jetbrains toolbox
 brew cask install jetbrains-toolbox
@@ -57,9 +51,6 @@ brew cask install gitkraken
 ## Visual Studio Code
 brew cask install visual-studio-code
  
-## Bettertouchtool
-brew cask install bettertouchtool
- 
 ## Jetbrains Mono font
 brew cask install font-jetbrains-mono
  
@@ -71,14 +62,6 @@ brew install swiftformat
  
 echo "\ndone."
 
-## Install oh-my-zsh
-echo "\n
-Installing oh-my-zsh...
-\n"
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-source ~/.zshrc
-
 ## Add Export Statements
 echo "\n
 ## Remove user@macbook from prompt
@@ -89,17 +72,17 @@ export DEFAULT_USER=\$USER
 echo "\n" >> ~/.zshrc
 brew install zsh-autosuggestions
 echo "source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-source ~/.zshrc
  
 ## zsh syntax highlighting
 brew install zsh-syntax-highlighting
 echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-source ~/.zshrc
 
-echo "\ndone."
+echo "\nDone."
 
 ## Add Aliases
-echo "
+echo "Adding aliases to .zshrc file..."
+
+aliases="
 ## git aliases
 function gc { git commit -m \"\$@\" }
 alias gcm=\"git checkout master\"
@@ -125,35 +108,49 @@ alias glog=\"git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)
 alias zshrc=\"code ~/.zshrc\"
 alias refresh=\"source ~/.zshrc\"
 alias update=\"brew cleanup; brew update; brew upgrade;\"
-alias myip="curl http://ipecho.net/plain; echo"
-alias sshdir="cd ~/.ssh"
-alias home="cd ~"
-alias order66="echo execute order 66; sudo killall -v -9 java"
-alias xcpurge="rm -rf ~/Library/Developer/Xcode/DerivedData"
-" >> ~/.zshrc
+alias myip=\"curl http://ipecho.net/plain; echo\"
+alias sshdir=\"cd ~/.ssh\"
+alias home=\"cd ~\"
 
-## Add repos folders
-mkdir ~/Repos
-mkdir ~/Repos/iOS
+## Kill all java instances. Because java sucks.
+alias order66=\"echo execute order 66; sudo killall -v -9 java\"
 
-## Get Screensavers
-echo "\n
-Getting Screensavers from github...
+## Purge the Xcode Derrived Data folder.
+alias xcpurge=\"rm -rf ~/Library/Developer/Xcode/DerivedData\"
 "
-mkdir ~/Repos/screensavers
-git clone https://github.com/agarrharr/awesome-macos-screensavers.git ~/Repos/screensavers
+
+echo "$aliases" >> ~/.zshrc
 
 echo "\nDone."
 
 ## Setup ssh
-echo "\n
-Setting up ssh key. Please follow the prompts...
-"
+echo "\nSetting up ssh key. Please follow the prompts..."
 
 ssh-keygen
 
-echo "\ndone."
+echo "\nDone."
 
-echo "\nSetup Complete."
+## Install oh-my-zsh
+echo "\n
+Installing oh-my-zsh...
+\n"
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo "\nFinished installing oh-my-zsh."
+
+echo "\nEnvironment Setup Complete."
+
+echo "
+\nRemember to add oh-my-zsh plugins to .zshrc:
+
+plugins=(git encode64 z history)
+"
+
+echo "
+\nRemember to change zsh theme to \"agnoster\"
+
+ZSH_THEME="agnoster"
+"
 
 exit 0
