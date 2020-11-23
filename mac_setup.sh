@@ -148,9 +148,11 @@ plugins=(git encode64 z history)
 "
 
 echo "
-\nRemember to change zsh theme to \"agnoster\"
+\nRemember to do the following: 
 
-ZSH_THEME="agnoster"
+1. change zsh theme to \"agnoster\": ZSH_THEME="agnoster"
+2. Install Xcode
+3. Then run the following: \"sudo DevToolsSecurity -enable\"
 "
 
 exit 0
