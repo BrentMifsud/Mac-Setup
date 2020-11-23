@@ -8,15 +8,30 @@ Installing Homebrew...
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+## Check if SSH key already exists
+PUBLICKEY=~/.ssh/id_rsa.pub
+PRIVATEKEY=~/.ssh/id_rsa
+
+if test -f "$PUBLICKEY" && test -f "$PRIVATEKEY"; then 
+    echo "\nSSH key already exists.";
+    echo "Skipping SSH Keygen..."
+else
+    ## Setup ssh
+    echo "\nSSH key not found."
+    echo "Setting up ssh key. Please follow the prompts..."
+    ssh-keygen
+    echo "\nDone."
+fi
+
 # Check if .zshrc exists.
 ZSHRC=~/.zshrc
 
 if test -f "$ZSHRC"; then
-    echo "$ZSHRC already exists."
+    echo "\n.zshrc file already exists."
 else
-    echo ".zshrc not found. Creating it..."
+    echo "\n.zshrc not found. Creating it..."
     touch ~/.zshrc
-    echo ".zshrc created."
+    echo ".zshrc created"
 fi
 
 echo "\nInstalling applications from homebrew..."
@@ -120,13 +135,6 @@ alias xcpurge=\"rm -rf ~/Library/Developer/Xcode/DerivedData\"
 "
 
 echo "$aliases" >> ~/.zshrc
-
-echo "\nDone."
-
-## Setup ssh
-echo "\nSetting up ssh key. Please follow the prompts..."
-
-ssh-keygen
 
 echo "\nDone."
 
