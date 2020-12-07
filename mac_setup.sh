@@ -81,6 +81,14 @@ echo "\ndone."
 echo "\n
 ## Remove user@macbook from prompt
 export DEFAULT_USER=\$USER
+
+## Add brew completion to zsh
+if type brew &>/dev/null; then
+  FPATH=\$(brew --prefix)/share/zsh/site-functions:\$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 " >> ~/.zshrc
 
 ## zsh autosuggestions
