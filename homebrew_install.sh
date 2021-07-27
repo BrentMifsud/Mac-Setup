@@ -47,6 +47,9 @@ brew install swiftlint
  
 ## Swiftformat
 brew install swiftformat
+
+## Xcodes
+brew install xcodes
  
 echo "\ndone."
 
