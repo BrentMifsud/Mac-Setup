@@ -41,6 +41,7 @@ alias grh=\"git reset HEAD~\" # last commit
 alias gac=\"git add . && git commit -a -m \"
 alias gsu=\"git gpush --set-upstream origin \"
 alias glog=\"git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches\"
+
 ## other aliases
 alias zshrc=\"code ~/.zshrc\"
 alias refresh=\"source ~/.zshrc\"
@@ -48,8 +49,10 @@ alias update=\"brew upgrade; brew update; brew cleanup;\"
 alias myip=\"curl http://ipecho.net/plain; echo\"
 alias sshdir=\"cd ~/.ssh\"
 alias home=\"cd ~\"
+
 ## Kill all java instances. Because java sucks.
 alias order66=\"echo execute order 66; sudo killall -v -9 java\"
+
 ## Purge the Xcode Derrived Data folder.
 alias xcpurge=\"rm -rf ~/Library/Developer/Xcode/DerivedData; rm -rf ~/Library/Caches/org.swift.swiftpm\"
 "

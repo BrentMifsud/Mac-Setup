@@ -7,6 +7,8 @@ Installing Homebrew...
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/brentm/.zprofile 
+
 echo "\nInstalling applications from homebrew..."
 
 ## Tap fonts so that they can be installed via homebrew
@@ -17,21 +19,12 @@ brew install git
 
 ## get latest version of zsh
 brew install zsh
- 
-## Iterm2
-brew install iterm2
 
 ## Setapp
 brew install setapp
 
 ## Realm Studio
 brew install mongodb-realm-studio
- 
-## Jetbrains toolbox
-brew install jetbrains-toolbox
- 
-## Postman
-brew install postman
  
 ## Fork
 brew install fork
@@ -72,6 +65,7 @@ echo "source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/
 ## zsh syntax highlighting
 brew install zsh-syntax-highlighting
 echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
 
 ## Add Export Statements
 echo "\n
