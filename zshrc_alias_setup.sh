@@ -55,6 +55,9 @@ alias order66=\"echo execute order 66; sudo killall -v -9 java\"
 
 ## Purge the Xcode Derrived Data folder.
 alias xcpurge=\"rm -rf ~/Library/Developer/Xcode/DerivedData; rm -rf ~/Library/Caches/org.swift.swiftpm\"
+
+## Reinstall Command line tools
+alias xcode-cli-reinstall=\"sudo rm -rf /Library/Developer/CommandLineTools; xcode-select --install\"
 "
 
 echo "$aliases" >> ~/.zshrc
