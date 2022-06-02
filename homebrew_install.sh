@@ -23,9 +23,6 @@ brew install zsh
 
 ## Setapp
 brew install setapp
-
-## Realm Studio
-brew install mongodb-realm-studio
  
 ## Fork
 brew install fork
@@ -35,12 +32,12 @@ brew install visual-studio-code
  
 ## Jetbrains Mono font
 brew install font-jetbrains-mono
- 
-## SwiftLint
-brew install swiftlint
- 
-## Swiftformat
-brew install swiftformat
+
+## 1Password
+brew install 1password
+
+## Swift-Format
+brew install swift-format
 
 ## Xcodes
 brew install xcodes
