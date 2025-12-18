@@ -2,6 +2,7 @@
 brew "git"
 brew "gh"
 brew "glab"
+brew "jq"
 brew "zsh"
 brew "swift-format"
 brew "swiftlint"

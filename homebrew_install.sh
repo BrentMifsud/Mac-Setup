@@ -26,12 +26,6 @@ brew bundle --file=~/.Brewfile
 
 echo "\ndone."
 
-## Copy Claude commands to home directory
-echo "\nInstalling Claude commands..."
-mkdir -p ~/.claude/commands
-cp "$SCRIPT_DIR/.claude/commands/"*.md ~/.claude/commands/
-echo "Claude commands installed to ~/.claude/commands/"
-
 # Ensure .zshrc exists
 touch ~/.zshrc
 

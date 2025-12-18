@@ -11,10 +11,12 @@ Automates the installation and configuration of daily-use software and developme
 - `mac_setup.sh` - Main entry point that orchestrates all other scripts
 - `homebrew_install.sh` - Installs Homebrew and applications from the Brewfile
 - `Brewfile` - Declarative list of all Homebrew packages and casks (copied to `~/.Brewfile` during setup)
-- `.claude/commands/` - Claude Code commands (copied to `~/.claude/commands/` during setup)
 - `oh_my_zsh_install.sh` - Installs Oh My Zsh
 - `zshrc_alias_setup.sh` - Configures shell aliases (git shortcuts, utilities)
 - `ssh_key_setup.sh` - Sets up SSH keys
+- `claude_config_setup.sh` - Installs Claude Code commands and settings
+- `.claude/commands/` - Claude Code commands (copied to `~/.claude/commands/` during setup)
+- `.claude/settings.json` - Claude Code permission settings (merged into `~/.claude/settings.json` during setup)
 
 ## Installed Software
 
