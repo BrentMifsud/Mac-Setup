@@ -32,34 +32,34 @@ mkdir -p ~/.claude/commands
 cp "$SCRIPT_DIR/.claude/commands/"*.md ~/.claude/commands/
 echo "Claude commands installed to ~/.claude/commands/"
 
-# Check if .zshrc exists.
-ZSHRC=~/.zshrc
+# Ensure .zshrc exists
+touch ~/.zshrc
 
-if test -f "$ZSHRC"; then
-    echo "\n.zshrc file already exists."
-else
-    echo "\n.zshrc not found. Creating it..."
-    touch ~/.zshrc
-    echo ".zshrc created"
+## Configure zsh autosuggestions (if not already configured)
+if ! grep -q 'zsh-autosuggestions.zsh' ~/.zshrc 2>/dev/null; then
+    echo "\n## zsh-autosuggestions" >> ~/.zshrc
+    echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 fi
 
-## Configure zsh autosuggestions
-echo "\n" >> ~/.zshrc
-echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+## Configure zsh syntax highlighting (if not already configured)
+if ! grep -q 'zsh-syntax-highlighting.zsh' ~/.zshrc 2>/dev/null; then
+    echo "\n## zsh-syntax-highlighting" >> ~/.zshrc
+    echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+fi
 
-## Configure zsh syntax highlighting
-echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
+if ! grep -q 'ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR' ~/.zshenv 2>/dev/null; then
+    touch ~/.zshenv
+    echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
+fi
 
-## Add Export Statements
-echo "\n
-## Add brew completion to zsh
-if type brew &>/dev/null; then
-  FPATH=\$(brew --prefix)/share/zsh/site-functions:\$FPATH
-
+## Add brew completion to zsh (if not already configured)
+if ! grep -q 'brew completion' ~/.zshrc 2>/dev/null; then
+    echo "\n## brew completion" >> ~/.zshrc
+    echo 'if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   autoload -Uz compinit
   compinit
+fi' >> ~/.zshrc
 fi
-" >> ~/.zshrc
 
 echo "\nDone."
