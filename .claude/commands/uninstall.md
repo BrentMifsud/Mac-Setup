@@ -1,12 +1,13 @@
 Read the Brewfile at `~/.Brewfile` to get the full list of software that may have been installed by this setup.
 
-Present the user with a formatted list of all software, organized by category (CLI tools, Applications, Fonts, Shell, Config, etc.). Display the list inside a code block for consistent formatting. Include Oh My Zsh in the Shell category. Include "Claude Commands" in a Config category. Include "Homebrew" as an option at the end of the list.
+Present the user with a formatted list of all software, organized by category (CLI tools, Applications, Fonts, Shell, Config, etc.). Display the list inside a code block for consistent formatting. Start with "0. all" option to uninstall all Brewfile software. Include Oh My Zsh in the Shell category. Include "Claude Commands" in a Config category. Include "Homebrew" as an option at the end of the list.
 
 Ask the user which ones they would like to uninstall. They can select multiple items.
 
 Once they confirm their selection, uninstall the selected software using the appropriate method:
-- For Homebrew packages: `brew uninstall <package>`
-- For Homebrew casks: `brew uninstall --cask <package>`
+- For "all" (option 0): Run `brew bundle cleanup --force --file=~/.Brewfile` to uninstall all Brewfile software (does not uninstall Oh My Zsh, Claude Commands, or Homebrew itself)
+- For individual Homebrew packages: `brew uninstall <package>`
+- For individual Homebrew casks: `brew uninstall --cask <package>`
 - For Oh My Zsh: `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/uninstall.sh)"`
 - For Claude Commands: Remove `~/.claude/commands/install.md`, `~/.claude/commands/uninstall.md`, `~/.claude/commands/update.md`, `~/.claude/commands/xcode.md`, and `~/.Brewfile`
 - For Homebrew itself: Follow the special Homebrew uninstall process below
