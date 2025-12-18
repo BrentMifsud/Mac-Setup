@@ -17,17 +17,20 @@ Automates the installation and configuration of daily-use software and developme
 - `claude_config_setup.sh` - Installs Claude Code commands and settings
 - `.claude/commands/` - Claude Code commands (copied to `~/.claude/commands/` during setup)
 - `.claude/settings.json` - Claude Code permission settings (merged into `~/.claude/settings.json` during setup)
+- `.claude/CLAUDE.md` - Global preferences (copied to `~/.claude/CLAUDE.md` during setup)
 
 ## Installed Software
 
 ### CLI Tools
-- git, zsh, swift-format, swiftlint
+- git, gh (GitHub CLI), glab (GitLab CLI), jq
+- zsh, swift-format, swiftlint
 - xcodes (Xcode version manager)
 - zsh-autosuggestions, zsh-syntax-highlighting
 
 ### Applications
 - Setapp, Fork, Visual Studio Code, 1Password
 - RapidAPI, Proxyman, Claude, DB Browser for SQLite
+- SSH Config Editor, Warp
 
 ### Fonts
 - JetBrains Mono
