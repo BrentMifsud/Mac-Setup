@@ -1,6 +1,3 @@
-# Taps
-tap "homebrew/cask-fonts"
-
 # CLI Tools
 brew "git"
 brew "zsh"
@@ -19,6 +16,7 @@ cask "rapidapi"
 cask "proxyman"
 cask "claude"
 cask "db-browser-for-sqlite"
+cask "ssh-config-editor"
 
 # Fonts
 cask "font-jetbrains-mono"

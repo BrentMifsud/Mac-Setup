@@ -61,19 +61,45 @@ Commands read from `~/.Brewfile` to determine available software.
 
 ## Allowed Commands
 
+These commands should run without requiring user approval:
+
 ```
+# Homebrew - all variations
 brew install:*
+brew install --cask:*
 brew uninstall:*
+brew uninstall --cask:*
+brew reinstall:*
+brew reinstall --cask:*
 brew bundle:*
 brew update
+brew upgrade
 brew upgrade:*
 brew cleanup
-omz update
+brew list
+brew list --cask
+brew info:*
+brew search:*
+brew tap:*
+brew untap:*
+
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)":*
+$ZSH/tools/upgrade.sh
+"$ZSH/tools/upgrade.sh"
+
+# Xcode management
 xcodes install:*
 xcodes uninstall:*
 xcodes installed
 xcodes list
 xcodes select:*
+xcodes version
+xcodes update
+
+# File operations for config installation
+cp:*
+mkdir:*
 ```
 
-When running the `/install`, `/update`, or `/uninstall` commands, do not ask for permission to run brew commands. Only ask for confirmation if the user chooses to uninstall all software.
+When running the `/install`, `/update`, or `/uninstall` commands, execute all commands immediately without asking for permission. Only ask for confirmation if the user chooses to uninstall all software.
