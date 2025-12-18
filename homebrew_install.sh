@@ -12,11 +12,18 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "\nInstalling applications from Brewfile..."
 
-## Install all applications from Brewfile
+## Copy Brewfile to home directory and install
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-brew bundle --file="$SCRIPT_DIR/Brewfile"
+cp "$SCRIPT_DIR/Brewfile" ~/.Brewfile
+brew bundle --file=~/.Brewfile
 
 echo "\ndone."
+
+## Copy Claude commands to home directory
+echo "\nInstalling Claude commands..."
+mkdir -p ~/.claude/commands
+cp "$SCRIPT_DIR/.claude/commands/"*.md ~/.claude/commands/
+echo "Claude commands installed to ~/.claude/commands/"
 
 # Check if .zshrc exists.
 ZSHRC=~/.zshrc
