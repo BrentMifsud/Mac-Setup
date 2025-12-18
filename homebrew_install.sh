@@ -10,38 +10,12 @@ Installing Homebrew...
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-echo "\nInstalling applications from homebrew..."
+echo "\nInstalling applications from Brewfile..."
 
-## Tap fonts so that they can be installed via homebrew
-brew tap homebrew/cask-fonts
+## Install all applications from Brewfile
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+brew bundle --file="$SCRIPT_DIR/Brewfile"
 
-## Get latest version of git
-brew install git
-
-## get latest version of zsh
-brew install zsh
-
-## Setapp
-brew install setapp
- 
-## Fork
-brew install fork
- 
-## Visual Studio Code
-brew install visual-studio-code
- 
-## Jetbrains Mono font
-brew install font-jetbrains-mono
-
-## 1Password
-brew install 1password
-
-## Swift-Format
-brew install swift-format
-
-## Xcodes
-brew install xcodes
- 
 echo "\ndone."
 
 # Check if .zshrc exists.
@@ -55,13 +29,11 @@ else
     echo ".zshrc created"
 fi
 
-## zsh autosuggestions
+## Configure zsh autosuggestions
 echo "\n" >> ~/.zshrc
-brew install zsh-autosuggestions
 echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
- 
-## zsh syntax highlighting
-brew install zsh-syntax-highlighting
+
+## Configure zsh syntax highlighting
 echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
 
