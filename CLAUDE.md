@@ -40,7 +40,7 @@ chmod 0700 mac_setup.sh
 ./mac_setup.sh
 ```
 
-Note: Oh My Zsh installation interrupts the script, so you may need to run it twice.
+The script is idempotent and can be safely re-run if interrupted.
 
 ## Claude Commands
 
