@@ -23,4 +23,12 @@ else
     echo "Claude settings installed to ~/.claude/settings.json"
 fi
 
+## Copy global CLAUDE.md (only if it doesn't exist to preserve user customizations)
+if [ ! -f ~/.claude/CLAUDE.md ]; then
+    cp "$SCRIPT_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
+    echo "Global preferences installed to ~/.claude/CLAUDE.md"
+else
+    echo "Global preferences already exist at ~/.claude/CLAUDE.md (skipped)"
+fi
+
 echo "\nDone."
