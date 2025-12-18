@@ -1,79 +1,65 @@
 #!/bin/zsh
 
 ## Install Homebrew
-echo "\n
-Installing Homebrew...
-"
+echo "\nInstalling Homebrew..."
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+## Check if Homebrew is already installed
+if command -v brew &>/dev/null; then
+    echo "Homebrew is already installed. Skipping..."
+else
+    ## NONINTERACTIVE=1 prevents the "Press RETURN to continue" prompt
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+## Add brew to PATH if not already in .zprofile
+if ! grep -q 'brew shellenv' ~/.zprofile 2>/dev/null; then
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-echo "\nInstalling applications from homebrew..."
+echo "\nInstalling applications from Brewfile..."
 
-## Tap fonts so that they can be installed via homebrew
-brew tap homebrew/cask-fonts
+## Copy Brewfile to home directory and install
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cp "$SCRIPT_DIR/Brewfile" ~/.Brewfile
+brew bundle --file=~/.Brewfile
 
-## Get latest version of git
-brew install git
-
-## get latest version of zsh
-brew install zsh
-
-## Setapp
-brew install setapp
- 
-## Fork
-brew install fork
- 
-## Visual Studio Code
-brew install visual-studio-code
- 
-## Jetbrains Mono font
-brew install font-jetbrains-mono
-
-## 1Password
-brew install 1password
-
-## Swift-Format
-brew install swift-format
-
-## Xcodes
-brew install xcodes
- 
 echo "\ndone."
 
-# Check if .zshrc exists.
-ZSHRC=~/.zshrc
+## Copy Claude commands to home directory
+echo "\nInstalling Claude commands..."
+mkdir -p ~/.claude/commands
+cp "$SCRIPT_DIR/.claude/commands/"*.md ~/.claude/commands/
+echo "Claude commands installed to ~/.claude/commands/"
 
-if test -f "$ZSHRC"; then
-    echo "\n.zshrc file already exists."
-else
-    echo "\n.zshrc not found. Creating it..."
-    touch ~/.zshrc
-    echo ".zshrc created"
+# Ensure .zshrc exists
+touch ~/.zshrc
+
+## Configure zsh autosuggestions (if not already configured)
+if ! grep -q 'zsh-autosuggestions.zsh' ~/.zshrc 2>/dev/null; then
+    echo "\n## zsh-autosuggestions" >> ~/.zshrc
+    echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 fi
 
-## zsh autosuggestions
-echo "\n" >> ~/.zshrc
-brew install zsh-autosuggestions
-echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
- 
-## zsh syntax highlighting
-brew install zsh-syntax-highlighting
-echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
+## Configure zsh syntax highlighting (if not already configured)
+if ! grep -q 'zsh-syntax-highlighting.zsh' ~/.zshrc 2>/dev/null; then
+    echo "\n## zsh-syntax-highlighting" >> ~/.zshrc
+    echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+fi
 
-## Add Export Statements
-echo "\n
-## Add brew completion to zsh
-if type brew &>/dev/null; then
-  FPATH=\$(brew --prefix)/share/zsh/site-functions:\$FPATH
+if ! grep -q 'ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR' ~/.zshenv 2>/dev/null; then
+    touch ~/.zshenv
+    echo "export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" >> ~/.zshenv
+fi
 
+## Add brew completion to zsh (if not already configured)
+if ! grep -q 'brew completion' ~/.zshrc 2>/dev/null; then
+    echo "\n## brew completion" >> ~/.zshrc
+    echo 'if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   autoload -Uz compinit
   compinit
+fi' >> ~/.zshrc
 fi
-" >> ~/.zshrc
 
 echo "\nDone."
