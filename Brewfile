@@ -1,5 +1,7 @@
 # CLI Tools
 brew "git"
+brew "gh"
+brew "glab"
 brew "zsh"
 brew "swift-format"
 brew "swiftlint"
