@@ -20,6 +20,7 @@ cask "proxyman"
 cask "claude"
 cask "db-browser-for-sqlite"
 cask "ssh-config-editor"
+cask "warp"
 
 # Fonts
 cask "font-jetbrains-mono"
