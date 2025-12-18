@@ -5,9 +5,9 @@ Present the user with a formatted list of all software, organized by category (C
 Ask the user which ones they would like to update. They can select multiple items.
 
 Once they confirm their selection, update the selected software using the appropriate method:
-- For "all": `brew update && brew upgrade && brew cleanup` then `omz update`
+- For "all": `brew update && brew upgrade && brew cleanup` then update Oh My Zsh
 - For Homebrew packages/casks: `brew upgrade <package>`
-- For Oh My Zsh: `omz update`
+- For Oh My Zsh: `ZSH="${ZSH:-$HOME/.oh-my-zsh}" && "$ZSH/tools/upgrade.sh"` (use the direct upgrade script since `omz update` doesn't work in non-interactive shells)
 
 If $ARGUMENTS is provided, treat it as the software selection and skip the prompting step.
 
