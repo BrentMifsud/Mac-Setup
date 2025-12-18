@@ -12,8 +12,9 @@ Automates the installation and configuration of daily-use software and developme
 ## What Gets Installed
 
 ### CLI Tools
-- git, zsh
-- swift-format, swiftlint
+- git, gh (GitHub CLI), glab (GitLab CLI)
+- jq (JSON processor)
+- zsh, swift-format, swiftlint
 - xcodes (Xcode version manager)
 - zsh-autosuggestions, zsh-syntax-highlighting
 
@@ -26,6 +27,8 @@ Automates the installation and configuration of daily-use software and developme
 - Proxyman
 - Claude
 - DB Browser for SQLite
+- SSH Config Editor
+- Warp (terminal)
 
 ### Fonts
 - JetBrains Mono
@@ -76,11 +79,15 @@ Mac-Setup/
 ├── oh_my_zsh_install.sh   # Installs Oh My Zsh
 ├── zshrc_alias_setup.sh   # Configures shell aliases
 ├── ssh_key_setup.sh       # Sets up SSH keys
-└── .claude/commands/      # Claude Code commands (copied to ~/.claude/commands/)
-    ├── install.md
-    ├── uninstall.md
-    ├── update.md
-    └── xcode.md
+├── claude_config_setup.sh # Installs Claude Code commands and settings
+└── .claude/
+    ├── CLAUDE.md          # Global preferences (copied to ~/.claude/CLAUDE.md)
+    ├── settings.json      # Permission settings (merged into ~/.claude/settings.json)
+    └── commands/          # Claude Code commands (copied to ~/.claude/commands/)
+        ├── install.md
+        ├── uninstall.md
+        ├── update.md
+        └── xcode.md
 ```
 
 ## Customization
