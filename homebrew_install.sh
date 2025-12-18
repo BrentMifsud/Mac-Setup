@@ -1,13 +1,20 @@
 #!/bin/zsh
 
 ## Install Homebrew
-echo "\n
-Installing Homebrew...
-"
+echo "\nInstalling Homebrew..."
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+## Check if Homebrew is already installed
+if command -v brew &>/dev/null; then
+    echo "Homebrew is already installed. Skipping..."
+else
+    ## NONINTERACTIVE=1 prevents the "Press RETURN to continue" prompt
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+## Add brew to PATH if not already in .zprofile
+if ! grep -q 'brew shellenv' ~/.zprofile 2>/dev/null; then
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "\nInstalling applications from Brewfile..."
