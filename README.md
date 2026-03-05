@@ -49,9 +49,11 @@ chmod 0700 mac_setup.sh
 ./mac_setup.sh
 ```
 
-## Claude Code Commands
+## Claude Code Configuration
 
-After running setup, these commands are available globally in Claude Code:
+After running setup, the following Claude Code customizations are installed:
+
+### Commands (`~/.claude/commands/`)
 
 | Command | Description |
 |---------|-------------|
@@ -59,6 +61,31 @@ After running setup, these commands are available globally in Claude Code:
 | `/uninstall` | Uninstall packages (includes Homebrew cleanup) |
 | `/update` | Update installed software (individual or all) |
 | `/xcode` | Manage Xcode installations via xcodes CLI |
+
+### Agents (`~/.claude/agents/`)
+
+| Agent | Description |
+|-------|-------------|
+| `watch-github-ci` | Monitor GitHub Actions workflow runs and PR checks |
+
+### Skills (`~/.claude/skills/`)
+
+| Skill | Description |
+|-------|-------------|
+| `git` | Git workflow conventions for commits, MRs/PRs, and changelogs (GitLab + GitHub) |
+
+### Plugins
+
+| Plugin | Source | Description |
+|--------|--------|-------------|
+| `swift-lsp` | claude-plugins-official | Swift/SourceKit-LSP integration |
+| `swiftui-expert` | AvdLee/SwiftUI-Agent-Skill | SwiftUI best practices skill |
+| `swift-concurrency` | AvdLee/Swift-Concurrency-Agent-Skill | Swift Concurrency best practices skill |
+
+### Global Preferences (`~/.claude/CLAUDE.md`)
+
+- Semantic versioning without 'v' prefix for Git tags
+- Context7 MCP for documentation lookup
 
 ### Examples
 
@@ -79,15 +106,19 @@ Mac-Setup/
 ├── oh_my_zsh_install.sh   # Installs Oh My Zsh
 ├── zshrc_alias_setup.sh   # Configures shell aliases
 ├── ssh_key_setup.sh       # Sets up SSH keys
-├── claude_config_setup.sh # Installs Claude Code commands and settings
+├── claude_config_setup.sh # Installs Claude Code config, plugins, agents, and skills
 └── .claude/
     ├── CLAUDE.md          # Global preferences (copied to ~/.claude/CLAUDE.md)
     ├── settings.json      # Permission settings (merged into ~/.claude/settings.json)
-    └── commands/          # Claude Code commands (copied to ~/.claude/commands/)
-        ├── install.md
-        ├── uninstall.md
-        ├── update.md
-        └── xcode.md
+    ├── commands/          # Claude Code commands (copied to ~/.claude/commands/)
+    │   ├── install.md
+    │   ├── uninstall.md
+    │   ├── update.md
+    │   └── xcode.md
+    ├── agents/            # Claude Code agents (copied to ~/.claude/agents/)
+    │   └── watch-github-ci.md
+    └── skills/            # Claude Code skills (copied to ~/.claude/skills/)
+        └── git/SKILL.md
 ```
 
 ## Customization
