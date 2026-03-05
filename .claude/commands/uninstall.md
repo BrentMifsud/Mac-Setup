@@ -1,15 +1,27 @@
 Read the Brewfile at `~/.Brewfile` to get the full list of software that may have been installed by this setup.
 
-Present the user with a formatted list of all software, organized by category (CLI tools, Applications, Fonts, Shell, Config, etc.). Display the list inside a code block for consistent formatting. Start with "0. all" option to uninstall all Brewfile software. Include Oh My Zsh in the Shell category. Include "Claude Commands" in a Config category. Include "Homebrew" as an option at the end of the list.
+Present the user with a formatted list of all software, organized by category (CLI tools, Applications, Fonts, Shell, Claude Code, etc.). Display the list inside a code block for consistent formatting. Start with "0. all" option to uninstall all Brewfile software. Include Oh My Zsh in the Shell category. In the Claude Code category, include these items individually:
+- Claude Commands (slash commands: install, uninstall, update, xcode)
+- Claude Agents (watch-github-ci)
+- Claude Skills (git workflow)
+- Claude Plugins (swift-lsp, swiftui-expert, swift-concurrency)
+
+Include "Homebrew" as an option at the end of the list.
 
 Ask the user which ones they would like to uninstall. They can select multiple items.
 
 Once they confirm their selection, uninstall the selected software using the appropriate method:
-- For "all" (option 0): Run `brew bundle cleanup --force --file=~/.Brewfile` to uninstall all Brewfile software (does not uninstall Oh My Zsh, Claude Commands, or Homebrew itself)
+- For "all" (option 0): Run `brew bundle cleanup --force --file=~/.Brewfile` to uninstall all Brewfile software (does not uninstall Oh My Zsh, Claude Code items, or Homebrew itself)
 - For individual Homebrew packages: `brew uninstall <package>`
 - For individual Homebrew casks: `brew uninstall --cask <package>`
 - For Oh My Zsh: `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/uninstall.sh)"`
 - For Claude Commands: Remove `~/.claude/commands/install.md`, `~/.claude/commands/uninstall.md`, `~/.claude/commands/update.md`, `~/.claude/commands/xcode.md`, and `~/.Brewfile`
+- For Claude Agents: Remove `~/.claude/agents/watch-github-ci.md`
+- For Claude Skills: Remove `~/.claude/skills/git/`
+- For Claude Plugins: Run `claude plugin uninstall <name>` for each plugin:
+  - `claude plugin uninstall swift-lsp@claude-plugins-official`
+  - `claude plugin uninstall swiftui-expert@swiftui-expert-skill`
+  - `claude plugin uninstall swift-concurrency@swift-concurrency-agent-skill`
 - For Homebrew itself: Follow the special Homebrew uninstall process below
 
 ## Homebrew Uninstall Process
