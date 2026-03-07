@@ -58,6 +58,12 @@ These commands are installed globally to `~/.claude/commands/` during setup:
 
 Commands read from `~/.Brewfile` to determine available software.
 
+## MCP Servers
+
+Installed globally (user scope) during setup:
+
+- **Proxyman** - Network traffic inspection and debugging. Requires Proxyman with MCP enabled (Settings → MCP). Supports both Setapp and direct installs.
+
 ## Key Conventions
 
 - All scripts use `#!/bin/zsh`
@@ -101,6 +107,11 @@ xcodes list
 xcodes select:*
 xcodes version
 xcodes update
+
+# Claude Code configuration
+claude mcp add:*
+claude mcp remove:*
+claude plugin install:*
 
 # File operations for config installation
 cp:*

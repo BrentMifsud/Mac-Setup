@@ -59,8 +59,28 @@ if command -v claude &>/dev/null; then
 
     claude plugin install swift-concurrency@swift-concurrency-agent-skill 2>/dev/null && \
         echo "Installed swift-concurrency plugin" || echo "swift-concurrency already installed or unavailable"
+
+    # Install MCP servers
+    echo "\nInstalling Claude Code MCP servers..."
+
+    # Proxyman - network debugging (requires MCP enabled in Proxyman: Settings → MCP)
+    PROXYMAN_MCP=""
+    while IFS= read -r app_path; do
+        if [ -x "$app_path/Contents/MacOS/mcp-server" ]; then
+            PROXYMAN_MCP="$app_path/Contents/MacOS/mcp-server"
+            break
+        fi
+    done <<< "$(mdfind 'kMDItemFSName == "Proxyman.app"' 2>/dev/null)"
+
+    if [ -n "$PROXYMAN_MCP" ]; then
+        claude mcp add proxyman -s user -- "$PROXYMAN_MCP" 2>/dev/null && \
+            echo "Installed Proxyman MCP server ($PROXYMAN_MCP)" || echo "Proxyman MCP already configured"
+        echo "Note: Enable MCP in Proxyman → Settings → MCP if not already enabled"
+    else
+        echo "Proxyman with MCP support not found — install it via Setapp or https://proxyman.com"
+    fi
 else
-    echo "\nClaude CLI not found — skipping plugin installation."
+    echo "\nClaude CLI not found — skipping plugin and MCP installation."
     echo "Install Claude Code first, then re-run this script to install plugins."
 fi
 
