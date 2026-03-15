@@ -29,7 +29,7 @@ Automates the installation and configuration of daily-use software and developme
 
 ### Applications
 - Setapp, Fork, Visual Studio Code, 1Password
-- RapidAPI, Proxyman, Claude, DB Browser for SQLite
+- RapidAPI, Proxyman, Claude, Conductor, DB Browser for SQLite
 - SSH Config Editor, Warp
 
 ### Fonts
